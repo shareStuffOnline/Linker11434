@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 import os
 import sys
-import signal
-import subprocess
-import psutil
 
+# Check for required packages
 try:
+    import psutil
+    from PIL import Image, ImageDraw
     import gi
     gi.require_version("AppIndicator3", "0.1")
     from gi.repository import AppIndicator3, Gtk, GLib
-    from PIL import Image, ImageDraw
 except ImportError:
-    print("ERROR: Requires AppIndicator3 and PIL libraries.")
+    print("ERROR: Missing required dependencies. Please install with:")
+    print("pip install psutil pillow")
+    print("sudo apt install python3-gi gir1.2-appindicator3-0.1 socat")
     sys.exit(1)
 
+import signal
+import subprocess
 ###############################################################################
 # Common bridging logic
 ###############################################################################
